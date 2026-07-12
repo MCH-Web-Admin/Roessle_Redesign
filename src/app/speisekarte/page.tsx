@@ -2,19 +2,33 @@ import type { Metadata } from "next";
 import { Button } from "@/components/Button";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
-import { menu, mittagstisch } from "@/data/menu";
+import {
+  abholNote,
+  allergyNote,
+  menu,
+  mittagstisch,
+  zusatzstoffe,
+} from "@/data/menu";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Speisekarte",
   description:
-    "Schwäbische Klassiker, Wild aus der Region, Vegetarisches und hausgemachte Desserts – die Speisekarte des Landgasthofs Rössle in Seedorf.",
+    "Die Speisekarte des Landgasthofs Rössle in Seedorf: Suppen, Salate, Vegetarisches, Vesper, schwäbische Hauptgerichte und Lenis’ Cheesburger – alles auch zum Abholen.",
 };
 
 function Price({ value }: { value: number }) {
   return (
     <span className="tnum display shrink-0 text-xl text-kupfer">
       {value.toFixed(2).replace(".", ",")} €
+    </span>
+  );
+}
+
+function Tag({ children }: { children: string }) {
+  return (
+    <span className="ml-2 inline-block translate-y-[-1px] rounded-full border border-tanne-soft/30 px-2 py-0.5 align-middle text-[0.6rem] font-semibold tracking-[0.08em] text-tanne-soft uppercase">
+      {children}
     </span>
   );
 }
@@ -29,7 +43,7 @@ export default function SpeisekartePage() {
             Was auf den <em>Tisch</em> kommt
           </>
         }
-        lead="Hausgemacht, regional und ehrlich – von schwäbischen Klassikern bis zum süßen Abschluss. Dazu Montag bis Freitag unser wechselnder Mittagstisch."
+        lead="Hausgemacht, regional und ehrlich – von der Rinderkraftbrühe bis zu Lenis’ Cheesburger. Alle Gerichte gibt es auch zum Abholen."
       />
 
       {/* Mittagstisch-Hinweis -------------------------------------------- */}
@@ -58,7 +72,7 @@ export default function SpeisekartePage() {
       {/* Karte ------------------------------------------------------------ */}
       <div className="mx-auto max-w-4xl px-5 py-20">
         {/* Sprungnavigation */}
-        <nav aria-label="Kategorien" className="mb-16">
+        <nav aria-label="Kategorien" className="mb-14">
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {menu.map((section) => (
               <li key={section.id}>
@@ -73,12 +87,18 @@ export default function SpeisekartePage() {
           </ul>
         </nav>
 
-        <div className="flex flex-col gap-20">
+        <p className="mb-14 max-w-xl border-l-2 border-kupfer pl-4 text-sm leading-relaxed text-ink-soft">
+          {abholNote}
+        </p>
+
+        <div className="flex flex-col gap-18">
           {menu.map((section) => (
             <Reveal key={section.id}>
               <section id={section.id} className="scroll-mt-28">
                 <div className="flex items-baseline gap-6">
-                  <h2 className="display text-4xl">{section.title}</h2>
+                  <h2 className="hand text-[2.6rem] text-kupfer">
+                    {section.title}
+                  </h2>
                   <div className="h-px flex-1 bg-line" aria-hidden="true" />
                 </div>
                 {section.intro && (
@@ -86,20 +106,22 @@ export default function SpeisekartePage() {
                     {section.intro}
                   </p>
                 )}
-                <ul className="mt-8 flex flex-col gap-7">
+                <ul className="mt-7 flex flex-col gap-6">
                   {section.dishes.map((dish) => (
                     <li key={dish.name} className="flex items-baseline gap-4">
                       <div className="max-w-xl">
                         <h3 className="text-lg leading-snug font-semibold">
                           {dish.name}
-                          {dish.vegetarian && (
-                            <span
-                              className="ml-2 align-middle text-xs font-semibold tracking-wide text-tanne-soft/70 uppercase"
-                              title="Vegetarisch"
-                            >
-                              Veg
-                            </span>
+                          {dish.zusatz && (
+                            <sup className="ml-1 text-[0.65rem] font-normal text-ink-soft">
+                              {dish.zusatz}
+                            </sup>
                           )}
+                          {dish.vegan ? (
+                            <Tag>Vegan</Tag>
+                          ) : dish.vegetarian ? (
+                            <Tag>Veg</Tag>
+                          ) : null}
                         </h3>
                         {dish.description && (
                           <p className="mt-1 text-sm leading-relaxed text-ink-soft">
@@ -120,14 +142,22 @@ export default function SpeisekartePage() {
           ))}
         </div>
 
-        <div className="mt-20 border-t border-line pt-8 text-sm leading-relaxed text-ink-soft">
+        {/* Hinweise ---------------------------------------------------------- */}
+        <div className="mt-20 flex flex-col gap-6 border-t border-line pt-8 text-sm leading-relaxed text-ink-soft">
+          <p className="font-semibold text-ink">{allergyNote}</p>
           <p>
-            Alle Gerichte gibt es auch zum Mitnehmen – bestellen Sie einfach
-            telefonisch vor. Angaben zu Allergenen und Zusatzstoffen nennen wir
-            Ihnen gerne persönlich. Küchenzeiten können von den
-            Öffnungszeiten abweichen.
+            {zusatzstoffe.map(([nr, stoff], i) => (
+              <span key={nr}>
+                <sup>{nr}</sup> {stoff}
+                {i < zusatzstoffe.length - 1 && " · "}
+              </span>
+            ))}
           </p>
-          <div className="mt-6 flex flex-wrap gap-4">
+          <p>
+            Küchenzeiten können von den Öffnungszeiten abweichen – rufen Sie
+            zum Vorbestellen einfach kurz an.
+          </p>
+          <div className="flex flex-wrap gap-4">
             <Button href={site.phoneHref}>Vorbestellen · {site.phone}</Button>
             <Button href="/kontakt" variant="outline">
               Öffnungszeiten ansehen

@@ -1,16 +1,16 @@
 /**
- * Speisekarte – Datenpflege an einer Stelle.
- *
- * WICHTIG: Die Gerichte orientieren sich an der recherchierten Küche des
- * Rössle (schwäbische Klassiker, Wild, Vegetarisches, Pasta; Preisspanne
- * ca. 9–22 €). Konkrete Positionen und Preise sind Beispieldaten und
- * müssen vor Livegang anhand der aktuellen Karte gepflegt werden.
+ * Speisekarte – übernommen von der gedruckten Abholkarte des Rössle
+ * (Foto, Stand Juli 2026). Preise sind Abholpreise.
+ * Datenpflege an einer Stelle: Gericht ändern = hier ändern.
  */
 export type Dish = {
   name: string;
   description?: string;
   price: number;
   vegetarian?: boolean;
+  vegan?: boolean;
+  /** Zusatzstoff-Nummern laut Karte, z. B. "2,4" */
+  zusatz?: string;
   signature?: boolean;
 };
 
@@ -23,166 +23,171 @@ export type MenuSection = {
 
 export const menu: MenuSection[] = [
   {
-    id: "vorspeisen",
-    title: "Zum Anfang",
-    intro: "Suppen und Salate – hausgemacht, wie es sich gehört.",
+    id: "suppen",
+    title: "Suppen",
     dishes: [
       {
-        name: "Flädlesuppe",
-        description: "Kräftige Rinderbrühe mit hausgemachten Flädle",
-        price: 5.9,
-      },
-      {
-        name: "Maultasche in der Brühe",
-        description: "Hausgemachte Maultasche in Rinderbrühe mit Schnittlauch",
-        price: 6.9,
-      },
-      {
-        name: "Gemischter Salat",
-        description: "Blatt- und Rohkostsalate mit Hausdressing",
-        price: 6.5,
-        vegetarian: true,
-      },
-      {
-        name: "Großer Salatteller",
-        description:
-          "Bunte Salate mit gebratenen Putenstreifen oder Käse, dazu Bauernbrot",
-        price: 14.5,
+        name: "Rinderkraftbrühe mit Flädle",
+        price: 5.0,
       },
     ],
   },
   {
-    id: "klassiker",
-    title: "Schwäbische Klassiker",
-    intro: "Aus der Rössle-Küche – regional, ehrlich, mit Liebe gekocht.",
+    id: "salate",
+    title: "Salate",
     dishes: [
       {
-        name: "Hausgemachte Maultaschen",
-        description: "Geschmälzt mit Zwiebeln, dazu Kartoffelsalat",
-        price: 13.9,
-        signature: true,
-      },
-      {
-        name: "Käsespätzle",
-        description:
-          "Handgeschabte Spätzle mit würzigem Bergkäse und Röstzwiebeln, dazu kleiner Salat",
-        price: 12.9,
+        name: "Beilagensalat",
+        price: 5.0,
+        zusatz: "4,2",
         vegetarian: true,
-        signature: true,
       },
       {
-        name: "Zwiebelrostbraten",
+        name: "Großer gemischter Salat",
+        price: 8.5,
+        zusatz: "4,2",
+        vegetarian: true,
+      },
+      {
+        name: "Joggingteller",
         description:
-          "Vom heimischen Rind, mit Spätzle, Bratensauce und Röstzwiebeln",
-        price: 21.9,
-        signature: true,
-      },
-      {
-        name: "Schweinemedaillons in Champignonrahm",
-        description: "Zarte Medaillons mit Rahmchampignons, Spätzle und Salat",
-        price: 17.9,
-      },
-      {
-        name: "Schnitzel „Wiener Art“",
-        description: "Vom Schwein, mit Pommes frites und Salatbeilage",
-        price: 14.9,
-      },
-      {
-        name: "Rahmschnitzel",
-        description: "Mit Champignonrahmsauce, Spätzle und Salat",
-        price: 16.5,
-      },
-      {
-        name: "Cordon bleu",
-        description: "Gefüllt mit Schinken und Käse, dazu Pommes frites und Salat",
-        price: 17.5,
-      },
-    ],
-  },
-  {
-    id: "wald-und-weide",
-    title: "Aus Wald & Weide",
-    intro: "Saisonales aus der Region – je nach Jagd und Jahreszeit.",
-    dishes: [
-      {
-        name: "Hausgemachtes Wildragout",
-        description:
-          "Zartes Wildfleisch mit Preiselbeeren, Spätzle und gemischtem Salat",
-        price: 18.9,
-        signature: true,
-      },
-      {
-        name: "Wildbratwürste",
-        description: "Mit Sauerkraut und Kartoffelpüree",
-        price: 14.5,
+          "Alles, was die Salatküche hergibt, mit würzig panierten Putenbruststreifen",
+        price: 14.0,
+        zusatz: "4,2",
       },
     ],
   },
   {
     id: "vegetarisch",
-    title: "Vegetarisch & Pasta",
-    intro: "Auch ohne Fleisch wird bei uns niemand hungrig.",
+    title: "Vegetarisch & Vegan",
     dishes: [
       {
-        name: "Gemüse-Maultaschen",
-        description: "Gebraten, mit Ei und kleinem Salat",
-        price: 12.5,
+        name: "Vitamin-Teller",
+        description:
+          "Bunt gemischtes Gemüse mit Buttersoße (vegan = ohne Soße) und Kartoffelrösti",
+        price: 13.0,
         vegetarian: true,
       },
       {
-        name: "Spaghetti al Pomodoro",
-        description: "Fruchtige Tomatensauce, Parmesan und Basilikum",
-        price: 10.9,
-        vegetarian: true,
+        name: "Thai-Curry-Gemüse",
+        description: "Mit Basmatireis – vegan",
+        price: 13.0,
+        vegan: true,
       },
       {
-        name: "Pasta mit Pilzrahm",
-        description: "Bandnudeln mit frischen Champignons in Rahmsauce",
-        price: 12.9,
+        name: "Schwäbische Käsespätzle",
+        description: "Mit Röstzwiebeln",
+        price: 9.0,
+        zusatz: "4,2",
+        vegetarian: true,
+        signature: true,
+      },
+    ],
+  },
+  {
+    id: "vesper",
+    title: "Vesper",
+    dishes: [
+      {
+        name: "Wurstsalat",
+        price: 10.0,
+        zusatz: "2,4",
+      },
+      {
+        name: "Strassburger",
+        price: 10.0,
+        zusatz: "2,4",
+      },
+      {
+        name: "Chefsalat „mit allem drin“",
+        description:
+          "Lyoner, Emmentaler, Schwarzwurst, Zwiebeln und Essiggurke, dazu Brot",
+        price: 11.0,
+        zusatz: "2,4",
+      },
+    ],
+  },
+  {
+    id: "hauptgerichte",
+    title: "Hauptgerichte",
+    dishes: [
+      {
+        name: "Paniertes Schweineschnitzel",
+        description: "Mit Pommes frites",
+        price: 12.0,
+      },
+      {
+        name: "Wildragout",
+        description: "Mit Spätzle und Preiselbeeren",
+        price: 17.0,
+        signature: true,
+      },
+      {
+        name: "Rinderzunge",
+        description: "An Madeirasoße mit Kroketten und Gemüse",
+        price: 20.0,
+        zusatz: "3",
+      },
+      {
+        name: "Schweinemedaillons",
+        description: "Mit Rahmchampignons und Eierspätzle",
+        price: 16.5,
+      },
+      {
+        name: "Zwiebelrostbraten",
+        description: "Mit Bratkartoffeln",
+        price: 21.0,
+        signature: true,
+      },
+      {
+        name: "Schwäbischer Sauerbraten",
+        description: "Mit Eierspätzle",
+        price: 15.0,
+        zusatz: "2",
+      },
+      {
+        name: "Gebratenes Lachsfilet",
+        description: "An Rieslingsoße mit Basmatireis",
+        price: 18.5,
+      },
+      {
+        name: "Beilagensalat zum Hauptgericht",
+        price: 5.0,
+        zusatz: "2,4",
         vegetarian: true,
       },
     ],
   },
   {
-    id: "kinder",
-    title: "Für die Kleinen",
+    id: "burger",
+    title: "Burger",
     dishes: [
       {
-        name: "Kinderschnitzel",
-        description: "Mit Pommes frites und Ketchup",
-        price: 8.5,
-      },
-      {
-        name: "Spätzle mit Sauce",
-        description: "Kleine Portion mit Bratensauce",
-        price: 6.5,
-        vegetarian: true,
+        name: "Lenis’ Cheesburger",
+        description:
+          "Mit Spezialsoße, Essiggurke, Balsamico-Zwiebeln, Cheddar und Pommes",
+        price: 15.0,
+        zusatz: "2,4,7",
+        signature: true,
       },
     ],
   },
-  {
-    id: "dessert",
-    title: "Süßer Abschluss",
-    dishes: [
-      {
-        name: "Apfelküchle",
-        description: "In Zimtzucker gewendet, mit Vanilleeis",
-        price: 7.5,
-        vegetarian: true,
-      },
-      {
-        name: "Ofenschlupfer",
-        description: "Schwäbischer Brotauflauf mit Vanillesauce",
-        price: 7.9,
-        vegetarian: true,
-      },
-      {
-        name: "Gemischtes Eis mit Sahne",
-        price: 6.5,
-        vegetarian: true,
-      },
-    ],
-  },
+];
+
+export const abholNote =
+  "Alle Preise sind Abholpreise. Lieferung je nach Kapazität möglich.";
+
+export const allergyNote =
+  "Haben Sie eine Allergie? Wir geben Ihnen gerne persönlich Auskunft!";
+
+export const zusatzstoffe: [string, string][] = [
+  ["1", "Geschmacksverstärker"],
+  ["2", "Antioxidationsmittel"],
+  ["3", "Nitritpökelsalz"],
+  ["4", "Konservierungsstoff"],
+  ["5", "Süßungsmittel"],
+  ["6", "Phosphat"],
+  ["7", "Farbstoff"],
 ];
 
 export const mittagstisch = {

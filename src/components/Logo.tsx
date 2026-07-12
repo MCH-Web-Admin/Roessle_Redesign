@@ -1,6 +1,4 @@
-import { site } from "@/data/site";
-
-/** Stilisierter Rössle-Kopf (Springer-Silhouette), Fläche in currentColor. */
+/** Stilisierter Rössle-Kopf (Springer-Silhouette) – Wasserzeichen & Favicon. */
 export function RoessleMark({ className }: { className?: string }) {
   return (
     <svg
@@ -37,37 +35,62 @@ export function RoessleMark({ className }: { className?: string }) {
   );
 }
 
+/** Drei Holzscheiben aus dem Original-Logo. */
+export function WoodDiscs({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 76 32"
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+    >
+      {/* dunkle Scheibe */}
+      <g>
+        <circle cx="12" cy="21" r="10" fill="#5c3d26" />
+        <circle cx="12" cy="21" r="6.5" fill="none" stroke="#7a5433" strokeWidth="1.4" />
+        <circle cx="12" cy="21" r="3" fill="none" stroke="#7a5433" strokeWidth="1.1" />
+      </g>
+      {/* mittlere Scheibe */}
+      <g>
+        <circle cx="36" cy="18" r="12" fill="#b05f2e" />
+        <circle cx="36" cy="18" r="8" fill="none" stroke="#d08a55" strokeWidth="1.5" />
+        <circle cx="36" cy="18" r="4" fill="none" stroke="#d08a55" strokeWidth="1.2" />
+      </g>
+      {/* helle Scheibe */}
+      <g>
+        <circle cx="62" cy="16" r="13" fill="#d9b98c" />
+        <circle cx="62" cy="16" r="8.8" fill="none" stroke="#b98f5c" strokeWidth="1.5" />
+        <circle cx="62" cy="16" r="4.4" fill="none" stroke="#b98f5c" strokeWidth="1.2" />
+      </g>
+    </svg>
+  );
+}
+
+/**
+ * Logo-Lockup nach Original: Schreibschrift „Landgasthof Rössle"
+ * mit drei Holzscheiben.
+ */
 export function Logo({
   dark = false,
   compact = false,
 }: {
-  /** Für dunkle Untergründe (Footer, Hero). */
+  /** Für dunkle Untergründe (Header transparent, Footer). */
   dark?: boolean;
   compact?: boolean;
 }) {
   return (
-    <span className="inline-flex items-center gap-3">
+    <span className="inline-flex items-end gap-2.5">
       <span
-        className={`grid size-10 shrink-0 place-items-center rounded-full ${
-          dark ? "bg-kupfer text-tanne" : "bg-tanne text-kalk"
-        }`}
+        className={`flex flex-col ${dark ? "text-kalk" : "text-ink"}`}
       >
-        <RoessleMark className="mt-0.5 size-6" />
-      </span>
-      <span className="flex flex-col leading-none">
-        <span
-          className={`display text-[1.35rem] ${dark ? "text-kalk" : "text-ink"}`}
-        >
-          Rössle
-        </span>
         {!compact && (
-          <span
-            className={`eyebrow mt-1 ${dark ? "text-stroh" : "text-ink-soft"}`}
-          >
-            Landgasthof · {site.place}
+          <span className="script -mb-0.5 -rotate-2 pl-1 text-[0.95rem] opacity-90">
+            Landgasthof
           </span>
         )}
+        <span className="script text-[2.1rem] leading-[0.85]">Rössle</span>
       </span>
+      <WoodDiscs className="mb-1 h-6 w-auto shrink-0" />
     </span>
   );
 }

@@ -43,9 +43,9 @@ npm run build   # Produktionsbuild
 
 ## Vor dem Livegang prüfen
 
-- [ ] **Speisekarte & Preise**: Die Gerichte in `src/data/menu.ts` sind
-      recherchierte Beispieldaten (Preisspanne lt. Recherche 9–22 €) und
-      müssen anhand der aktuellen Karte gepflegt werden.
+- [ ] **Speisekarte & Preise**: übernommen von der gedruckten Abholkarte
+      (Foto, Stand Juli 2026) in `src/data/menu.ts` – bei Kartenwechsel
+      dort pflegen. Mittagstisch-Preis („ab ca. 9 €“) bestätigen lassen.
 - [ ] **Öffnungszeiten** in `src/data/site.ts` mit der Familie Schneider
       abgleichen (Recherche-Stand Juli 2026).
 - [ ] **Fotos** der bisherigen Website in `public/images/` einpflegen.

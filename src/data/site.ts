@@ -75,13 +75,13 @@ export const navAll = [
   { href: "/kontakt", label: "Kontakt" },
 ] as const;
 
-/** Laufband auf der Startseite. */
+/** Laufband auf der Startseite – Gerichte von der echten Karte. */
 export const specialties = [
-  "Hausgemachte Maultaschen",
-  "Handgeschabte Spätzle",
   "Zwiebelrostbraten",
-  "Wild aus heimischer Jagd",
+  "Wildragout mit Spätzle",
+  "Schwäbische Käsespätzle",
+  "Schwäbischer Sauerbraten",
+  "Lenis’ Cheesburger",
   "Edelbrände aus eigener Brennerei",
   "Mittagstisch Mo – Fr",
-  "Feiern bis 120 Gäste",
 ];

@@ -141,7 +141,7 @@ export default function HomePage() {
                   Schwäbische Klassiker, <em>hausgemacht</em>
                 </>
               }
-              lead="Maultaschen, handgeschabte Spätzle, Wild aus heimischer Jagd – gekocht wird, was die Region hergibt."
+              lead="Vom Zwiebelrostbraten über Wildragout mit Spätzle bis zu Lenis’ Cheesburger – gekocht wird, was die Region hergibt. Alles auch zum Abholen."
             />
             <Button href="/speisekarte" variant="dark">
               Ganze Karte ansehen
@@ -158,9 +158,9 @@ export default function HomePage() {
                   <p className="text-sm leading-relaxed text-ink-soft">
                     {dish.description}
                   </p>
-                  {dish.vegetarian && (
+                  {(dish.vegetarian || dish.vegan) && (
                     <span className="eyebrow mt-auto pt-2 text-[0.62rem] text-tanne-soft/80">
-                      Vegetarisch
+                      {dish.vegan ? "Vegan" : "Vegetarisch"}
                     </span>
                   )}
                 </article>

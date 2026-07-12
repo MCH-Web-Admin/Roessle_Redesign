@@ -19,7 +19,7 @@ const sortiment = [
   },
   {
     title: "Hausgemachtes",
-    text: "Maultaschen, Spätzle, eingemachte Schätze und mehr aus der Rössle-Küche – zum Mitnehmen für daheim.",
+    text: "Eingemachte Schätze, Soßen und mehr aus der Rössle-Küche – zum Mitnehmen für daheim.",
   },
   {
     title: "Geschenkkörbe",

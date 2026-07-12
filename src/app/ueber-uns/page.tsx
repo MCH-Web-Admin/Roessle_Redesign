@@ -19,7 +19,7 @@ const werte = [
   },
   {
     title: "Alles hausgemacht",
-    text: "Spätzle, Maultaschen, Saucen und Desserts entstehen bei uns in der Küche – nicht im Großhandel.",
+    text: "Spätzle, Soßen, Braten und Desserts entstehen bei uns in der Küche – nicht im Großhandel.",
   },
   {
     title: "Herzlich & familiär",
