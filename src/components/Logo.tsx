@@ -40,7 +40,7 @@ export function WoodDiscs({ className = "" }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 76 32"
-      className={className}
+      className={`logo-discs ${className}`}
       aria-hidden="true"
       focusable="false"
     >
@@ -68,26 +68,23 @@ export function WoodDiscs({ className = "" }: { className?: string }) {
 
 /**
  * Logo-Lockup nach Original: Schreibschrift „Landgasthof Rössle"
- * mit drei Holzscheiben.
+ * mit drei Holzscheiben. Bleibt in jedem Zustand identisch –
+ * nur die Schriftfarbe passt sich dem Untergrund an.
  */
 export function Logo({
   dark = false,
-  compact = false,
 }: {
   /** Für dunkle Untergründe (Header transparent, Footer). */
   dark?: boolean;
-  compact?: boolean;
 }) {
   return (
     <span className="inline-flex items-end gap-2.5">
       <span
-        className={`flex flex-col ${dark ? "text-kalk" : "text-ink"}`}
+        className={`flex flex-col transition-colors duration-300 ${dark ? "text-kalk" : "text-ink"}`}
       >
-        {!compact && (
-          <span className="script -mb-0.5 -rotate-2 pl-1 text-[0.95rem] opacity-90">
-            Landgasthof
-          </span>
-        )}
+        <span className="script -mb-0.5 -rotate-2 pl-1 text-[0.95rem] opacity-90">
+          Landgasthof
+        </span>
         <span className="script text-[2.1rem] leading-[0.85]">Rössle</span>
       </span>
       <WoodDiscs className="mb-1 h-6 w-auto shrink-0" />

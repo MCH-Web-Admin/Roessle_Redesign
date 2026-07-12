@@ -1,19 +1,28 @@
 import Link from "next/link";
 import { Button } from "@/components/Button";
+import { DishArt, type DishVariant } from "@/components/DishArt";
 import { ImageSlot } from "@/components/ImageSlot";
 import { RoessleMark } from "@/components/Logo";
+import { Marker } from "@/components/Marker";
 import { Marquee } from "@/components/Marquee";
 import { OpenToday } from "@/components/OpenToday";
 import { Reveal } from "@/components/Reveal";
 import { Eyebrow, SectionHead } from "@/components/Section";
 import { Skyline } from "@/components/Skyline";
-import { aktionswochen, menu, mittagstisch } from "@/data/menu";
+import { aktionswochen, menu, mittagstisch, type Dish } from "@/data/menu";
 import { hours, hoursNote, site } from "@/data/site";
 
-const signatureDishes = menu
-  .flatMap((section) => section.dishes)
-  .filter((dish) => dish.signature)
-  .slice(0, 4);
+const allDishes = menu.flatMap((section) => section.dishes);
+const findDish = (name: string): Dish =>
+  allDishes.find((dish) => dish.name.includes(name)) ?? allDishes[0];
+
+/** Signature-Gerichte mit passender Illustration. */
+const dishCards: { dish: Dish; variant: DishVariant }[] = [
+  { dish: findDish("Zwiebelrostbraten"), variant: "rostbraten" },
+  { dish: findDish("Wildragout"), variant: "wildragout" },
+  { dish: findDish("Käsespätzle"), variant: "kaesespaetzle" },
+  { dish: findDish("Cheesburger"), variant: "burger" },
+];
 
 const stimmen = [
   "Schön eingerichtete Stuben, freundliches Personal – und das Essen richtig lecker.",
@@ -48,7 +57,7 @@ export default function HomePage() {
           <h1 className="rise rise-2 display max-w-4xl text-[3.4rem] leading-[0.95] sm:text-7xl lg:text-[6.5rem]">
             Ehrlich kochen.
             <br />
-            <em className="text-kupfer-hell">Herzlich</em> wirten.
+            <Marker tone="hell">Herzlich</Marker> wirten.
           </h1>
           <p className="rise rise-3 max-w-xl text-lg leading-relaxed text-kalk/75">
             Seit über 160 Jahren steht unser Fachwerkhaus mitten in{" "}
@@ -85,7 +94,8 @@ export default function HomePage() {
             eyebrow="Willkommen im Rössle"
             title={
               <>
-                Ein Haus mit <em>Geschichte</em>, eine Küche mit Charakter
+                Ein Haus mit <Marker>Geschichte,</Marker> eine Küche mit
+                Charakter
               </>
             }
             lead={`Seit ${site.since} bewirtet unser Landgasthof Gäste aus Seedorf und der ganzen Region. In den liebevoll renovierten Stuben finden bis zu 120 Personen Platz – vom Mittagstisch unter der Woche bis zur großen Familienfeier.`}
@@ -97,7 +107,7 @@ export default function HomePage() {
               ["2", "Tagesessen Mo – Fr"],
             ].map(([value, label]) => (
               <div key={label} className="flex flex-col">
-                <span className="display tnum text-4xl text-kupfer sm:text-5xl">
+                <span className="display tnum text-4xl text-gruen-tief sm:text-5xl">
                   {value}
                 </span>
                 <span className="mt-1.5 text-xs leading-snug text-ink-soft sm:text-sm">
@@ -138,7 +148,7 @@ export default function HomePage() {
               eyebrow="Aus unserer Küche"
               title={
                 <>
-                  Schwäbische Klassiker, <em>hausgemacht</em>
+                  Schwäbische Klassiker, <Marker>hausgemacht</Marker>
                 </>
               }
               lead="Vom Zwiebelrostbraten über Wildragout mit Spätzle bis zu Lenis’ Cheesburger – gekocht wird, was die Region hergibt. Alles auch zum Abholen."
@@ -148,21 +158,30 @@ export default function HomePage() {
             </Button>
           </Reveal>
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {signatureDishes.map((dish, i) => (
+            {dishCards.map(({ dish, variant }, i) => (
               <Reveal key={dish.name} delay={i * 90}>
-                <article className="card-lift flex h-full flex-col gap-3 rounded-md border border-line bg-kalk p-7">
-                  <span className="tnum display text-3xl text-kupfer">
-                    {dish.price.toFixed(2).replace(".", ",")} €
-                  </span>
-                  <h3 className="display text-2xl leading-tight">{dish.name}</h3>
-                  <p className="text-sm leading-relaxed text-ink-soft">
-                    {dish.description}
-                  </p>
-                  {(dish.vegetarian || dish.vegan) && (
-                    <span className="eyebrow mt-auto pt-2 text-[0.62rem] text-tanne-soft/80">
-                      {dish.vegan ? "Vegan" : "Vegetarisch"}
-                    </span>
-                  )}
+                <article className="dish-card flex h-full flex-col overflow-hidden rounded-md border border-line bg-kalk">
+                  <div className="border-b border-line bg-kalk-deep/50 px-6 pt-4">
+                    <DishArt variant={variant} />
+                  </div>
+                  <div className="flex flex-1 flex-col gap-2 p-6">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <h3 className="display text-2xl leading-tight">
+                        {dish.name}
+                      </h3>
+                      <span className="tnum display shrink-0 text-2xl text-kupfer">
+                        {dish.price.toFixed(2).replace(".", ",")} €
+                      </span>
+                    </div>
+                    <p className="text-sm leading-relaxed text-ink-soft">
+                      {dish.description}
+                    </p>
+                    {(dish.vegetarian || dish.vegan) && (
+                      <span className="eyebrow mt-auto pt-2 text-[0.62rem] text-gruen-tief">
+                        {dish.vegan ? "Vegan" : "Vegetarisch"}
+                      </span>
+                    )}
+                  </div>
                 </article>
               </Reveal>
             ))}
@@ -176,7 +195,7 @@ export default function HomePage() {
           <Reveal>
             <Eyebrow tone="stroh">{mittagstisch.title}</Eyebrow>
             <h2 className="display mt-4 text-4xl sm:text-5xl">
-              Mittags gut essen – <em>im Haus oder daheim</em>
+              Mittags gut essen – im Haus oder daheim
             </h2>
             <p className="mt-5 max-w-xl leading-relaxed text-kalk/80">
               {mittagstisch.text}
@@ -205,7 +224,7 @@ export default function HomePage() {
             eyebrow="Übers Jahr verteilt"
             title={
               <>
-                Unsere <em>Aktionswochen</em>
+                Unsere <Marker>Aktionswochen</Marker>
               </>
             }
             lead="Von der Schlachtplatte bis zur Fischwoche – zu diesen Terminen ist das Rössle traditionell gut gebucht. Termine erfahren Sie im Haus und auf Instagram."
@@ -217,7 +236,7 @@ export default function HomePage() {
               <article className="card-lift h-full rounded-md border border-line bg-kalk p-8">
                 <div className="flex items-center justify-between gap-4">
                   <h3 className="display text-3xl">{aktion.title}</h3>
-                  <span aria-hidden="true" className="text-2xl text-kupfer">
+                  <span aria-hidden="true" className="text-2xl text-gruen">
                     ✳
                   </span>
                 </div>
@@ -240,7 +259,7 @@ export default function HomePage() {
               eyebrow="Aus eigener Hand"
               title={
                 <>
-                  Brennerei & <em>sLädele</em>
+                  Brennerei & <Marker tone="hell">sLädele</Marker>
                 </>
               }
               lead="Was bei uns wächst, wird bei uns veredelt: In der hauseigenen Brennerei entstehen feine Edelbrände und Liköre – im sLädele gibt es sie zum Mitnehmen und Verschenken."
@@ -299,7 +318,7 @@ export default function HomePage() {
             eyebrow="Das sagen unsere Gäste"
             title={
               <>
-                Kommen als Gast, <em>gehen als Freund</em>
+                Kommen als Gast, gehen als <Marker>Freund</Marker>
               </>
             }
             align="center"
@@ -383,7 +402,7 @@ export default function HomePage() {
               eyebrow="Wann Sie uns finden"
               title={
                 <>
-                  Unsere <em>Öffnungszeiten</em>
+                  Unsere <Marker>Öffnungszeiten</Marker>
                 </>
               }
             />
@@ -407,7 +426,7 @@ export default function HomePage() {
               eyebrow="Mitten in Seedorf"
               title={
                 <>
-                  Kommen Sie <em>vorbei</em>
+                  Kommen Sie <Marker>vorbei</Marker>
                 </>
               }
               lead={`${site.address.street}, ${site.address.zip} ${site.address.city} – direkt an der Ortsdurchfahrt, mit Parkplätzen am Haus.`}

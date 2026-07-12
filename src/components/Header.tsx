@@ -47,24 +47,29 @@ export function Header() {
     >
       <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-6 px-5">
         <Link href="/" aria-label="Zur Startseite" className="shrink-0">
-          <Logo dark={light} compact={scrolled && !open} />
+          <Logo dark={light} />
         </Link>
 
         <nav aria-label="Hauptnavigation" className="hidden lg:block">
           <ul
             className={`flex items-center gap-8 ${light ? "text-kalk" : "text-ink"}`}
           >
-            {nav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  data-active={pathname.startsWith(item.href)}
-                  className="navlink text-[0.82rem] font-semibold tracking-[0.04em]"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+            {nav.map((item) => {
+              const active = pathname.startsWith(item.href);
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    data-active={active}
+                    className={`navlink text-[0.82rem] font-semibold tracking-[0.04em] ${
+                      active ? (light ? "text-gruen-hell" : "text-gruen-tief") : ""
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 

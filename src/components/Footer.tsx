@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Marker } from "@/components/Marker";
 import { Logo, RoessleMark } from "./Logo";
 import { hours, navAll, site } from "@/data/site";
 
@@ -12,7 +13,7 @@ export function Footer() {
       <div className="relative border-b border-line-dark">
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-5 py-12 sm:flex-row sm:items-center">
           <p className="display max-w-md text-3xl sm:text-4xl">
-            Lust auf einen Platz in der <em className="text-kupfer-hell">Stube</em>?
+            Lust auf einen Platz in der <Marker tone="hell">Stube</Marker>?
           </p>
           <a
             href={site.phoneHref}

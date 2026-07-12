@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/Button";
 import { ImageSlot } from "@/components/ImageSlot";
+import { Marker } from "@/components/Marker";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { SectionHead } from "@/components/Section";
@@ -49,7 +50,7 @@ export default function UeberUnsPage() {
         eyebrow="Über uns"
         title={
           <>
-            Seit {site.since} <em>im Dorf daheim</em>
+            Seit {site.since} im Dorf <Marker tone="hell">daheim</Marker>
           </>
         }
         lead="Über 160 Jahre Wirtshausgeschichte stecken in unseren Balken – und jede Generation hat das Rössle ein Stück weitergebaut."
@@ -61,7 +62,7 @@ export default function UeberUnsPage() {
             eyebrow="Unser Haus"
             title={
               <>
-                Ein Fachwerkhaus voller <em>Leben</em>
+                Ein Fachwerkhaus voller <Marker>Leben</Marker>
               </>
             }
             lead="Was 1862 als Dorfwirtschaft begann, ist heute Landgasthof, Brennerei und Treffpunkt in einem. Die liebevoll renovierten Stuben verbinden alte Balken mit heutigem Komfort – und bieten Platz für bis zu 120 Gäste."
@@ -91,7 +92,7 @@ export default function UeberUnsPage() {
               eyebrow="Chronik"
               title={
                 <>
-                  Drei Kapitel <em>Rössle</em>
+                  Drei Kapitel <Marker>Rössle</Marker>
                 </>
               }
             />
@@ -120,7 +121,7 @@ export default function UeberUnsPage() {
             eyebrow="Wofür wir stehen"
             title={
               <>
-                Gut gekocht ist <em>halb gewonnen</em>
+                Gut gekocht ist halb gewonnen
               </>
             }
           />

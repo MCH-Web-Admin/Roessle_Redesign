@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/Button";
 import { ImageSlot } from "@/components/ImageSlot";
+import { Marker } from "@/components/Marker";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { SectionHead } from "@/components/Section";
@@ -34,7 +35,7 @@ export default function BrennereiPage() {
         eyebrow="Hauseigene Brennerei"
         title={
           <>
-            Vom Baum <em>ins Glas</em>
+            Vom Baum ins <Marker tone="hell">Glas</Marker>
           </>
         }
         lead="In unserer Brennerei veredeln wir das Obst der Region zu feinen Edelbränden und Likören – ehrliches Handwerk, das man schmeckt."
@@ -55,7 +56,7 @@ export default function BrennereiPage() {
             eyebrow="Unser Handwerk"
             title={
               <>
-                Brennen mit <em>Geduld</em>
+                Brennen mit <Marker>Geduld</Marker>
               </>
             }
             lead="Ein guter Brand braucht reife Früchte, saubere Arbeit und Zeit. Genau so entstehen bei uns Obstbrände und Liköre, die den Geschmack ihrer Frucht behalten – nicht mehr, nicht weniger."
@@ -87,7 +88,7 @@ export default function BrennereiPage() {
               eyebrow="Verkostung"
               title={
                 <>
-                  Probieren geht über <em>Studieren</em>
+                  Probieren geht über Studieren
                 </>
               }
               lead="Erleben Sie unsere Brände bei einer Verkostung mit rustikalem Vesper – für Gruppen, Vereine oder als besonderes Geschenk. Termine nach Vereinbarung."

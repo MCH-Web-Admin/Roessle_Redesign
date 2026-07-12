@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Marker } from "@/components/Marker";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { SectionHead } from "@/components/Section";
@@ -36,7 +37,7 @@ export default function PartyservicePage() {
         eyebrow="Partyservice & Lieferung"
         title={
           <>
-            Rössle-Küche, <em>wo Sie sie brauchen</em>
+            Rössle-Küche, wo Sie sie <Marker tone="hell">brauchen</Marker>
           </>
         }
         lead="Ob Fest-Buffet, warmes Mittagessen daheim oder die tägliche Verpflegung von Kita und Heim – unsere Küche kommt zu Ihnen."
@@ -65,7 +66,7 @@ export default function PartyservicePage() {
               eyebrow="So einfach geht's"
               title={
                 <>
-                  Anrufen, bestellen, <em>genießen</em>
+                  Anrufen, bestellen, genießen
                 </>
               }
               lead="Sagen Sie uns, was Sie brauchen und für wie viele Personen – wir machen Ihnen ein passendes Angebot. Kurzfristige Tagesessen-Bestellungen nehmen wir gerne bis vormittags entgegen."
@@ -94,7 +95,7 @@ export default function PartyservicePage() {
             eyebrow="Häufige Fragen"
             title={
               <>
-                Kurz <em>beantwortet</em>
+                Kurz <Marker>beantwortet</Marker>
               </>
             }
           />

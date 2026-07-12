@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/Button";
+import { Marker } from "@/components/Marker";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import {
@@ -40,7 +41,7 @@ export default function SpeisekartePage() {
         eyebrow="Speisekarte"
         title={
           <>
-            Was auf den <em>Tisch</em> kommt
+            Was auf den <Marker tone="hell">Tisch</Marker> kommt
           </>
         }
         lead="Hausgemacht, regional und ehrlich – von der Rinderkraftbrühe bis zu Lenis’ Cheesburger. Alle Gerichte gibt es auch zum Abholen."

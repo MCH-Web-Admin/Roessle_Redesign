@@ -32,7 +32,7 @@ export function OpenToday({ tone = "dark" }: { tone?: "dark" | "light" }) {
     >
       <span
         aria-hidden="true"
-        className={`size-2 rounded-full ${state.open ? "bg-[#7fb069]" : "bg-kupfer-hell"}`}
+        className={`size-2 rounded-full ${state.open ? "bg-gruen-hell" : "bg-kupfer-hell"}`}
       />
       {state.open ? "Jetzt geöffnet" : "Derzeit geschlossen"} · heute{" "}
       {state.label}

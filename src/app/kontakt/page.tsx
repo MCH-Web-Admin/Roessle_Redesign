@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/Button";
+import { Marker } from "@/components/Marker";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { SectionHead } from "@/components/Section";
@@ -18,7 +19,7 @@ export default function KontaktPage() {
         eyebrow="Kontakt & Anfahrt"
         title={
           <>
-            Wir freuen uns <em>auf Sie</em>
+            Wir freuen uns <Marker tone="hell">auf Sie</Marker>
           </>
         }
         lead="Reservierung, Feier, Partyservice oder einfach ein Tisch zum Mittagessen – rufen Sie an oder schauen Sie vorbei."
@@ -30,7 +31,7 @@ export default function KontaktPage() {
             eyebrow="Kontakt"
             title={
               <>
-                Ein Anruf <em>genügt</em>
+                Ein Anruf <Marker>genügt</Marker>
               </>
             }
           />
@@ -94,7 +95,7 @@ export default function KontaktPage() {
             eyebrow="Öffnungszeiten"
             title={
               <>
-                Wann wir <em>da sind</em>
+                Wann wir da sind
               </>
             }
           />
@@ -119,7 +120,7 @@ export default function KontaktPage() {
               eyebrow="Anfahrt"
               title={
                 <>
-                  Gut zu <em>finden</em>
+                  Gut zu <Marker>finden</Marker>
                 </>
               }
               lead="Das Rössle liegt direkt an der Freudenstädter Straße, der Ortsdurchfahrt von Seedorf – zwischen Rottweil und dem Schwarzwald. Parkplätze finden Sie direkt am Haus."

@@ -2,7 +2,11 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 const styles = {
+  /** Rössle-Grün – Standard-Akzent */
   primary:
+    "bg-gruen text-kalk hover:bg-gruen-hell focus-visible:bg-gruen-hell",
+  /** Kupfer – warme Essens-/Reservierungs-CTAs */
+  copper:
     "bg-kupfer text-kalk hover:bg-kupfer-hell focus-visible:bg-kupfer-hell",
   outline:
     "border border-current text-inherit hover:bg-current/10 focus-visible:bg-current/10",

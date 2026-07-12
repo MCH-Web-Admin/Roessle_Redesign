@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/Button";
 import { ImageSlot } from "@/components/ImageSlot";
+import { Marker } from "@/components/Marker";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { SectionHead } from "@/components/Section";
@@ -38,7 +39,7 @@ export default function SlaedelePage() {
         eyebrow="sLädele"
         title={
           <>
-            Gutes zum <em>Mitnehmen</em>
+            Gutes zum <Marker tone="hell">Mitnehmen</Marker>
           </>
         }
         lead="Unser kleiner Laden im Gasthaus: Brände aus der eigenen Brennerei, Hausgemachtes aus der Küche und Geschenke mit Geschichte."
@@ -59,7 +60,7 @@ export default function SlaedelePage() {
             eyebrow="Stöbern & Schnuppern"
             title={
               <>
-                Klein, fein und <em>voller guter Dinge</em>
+                Klein, fein und voller guter Dinge
               </>
             }
             lead="Das sLädele ist zu unseren Öffnungszeiten für Sie da – schauen Sie einfach im Gasthaus vorbei. Gerne stellen wir Ihnen auch telefonisch etwas zusammen und legen es zum Abholen bereit."
@@ -80,7 +81,7 @@ export default function SlaedelePage() {
               eyebrow="Sortiment"
               title={
                 <>
-                  Was im Regal <em>steht</em>
+                  Was im Regal <Marker>steht</Marker>
                 </>
               }
             />

@@ -1,17 +1,20 @@
 import type { ReactNode } from "react";
 
+const eyebrowTones = {
+  gruen: "text-gruen-tief",
+  stroh: "text-stroh",
+  hell: "text-gruen-hell",
+  kupfer: "text-kupfer",
+} as const;
+
 export function Eyebrow({
   children,
-  tone = "kupfer",
+  tone = "gruen",
 }: {
   children: ReactNode;
-  tone?: "kupfer" | "stroh";
+  tone?: keyof typeof eyebrowTones;
 }) {
-  return (
-    <p className={`eyebrow ${tone === "kupfer" ? "text-kupfer" : "text-stroh"}`}>
-      {children}
-    </p>
-  );
+  return <p className={`eyebrow ${eyebrowTones[tone]}`}>{children}</p>;
 }
 
 /** Überschriftenblock mit Eyebrow – Herzstück der Sektionen. */
@@ -34,7 +37,7 @@ export function SectionHead({
         align === "center" ? "mx-auto items-center text-center" : ""
       }`}
     >
-      <Eyebrow tone={tone === "dark" ? "stroh" : "kupfer"}>{eyebrow}</Eyebrow>
+      <Eyebrow tone={tone === "dark" ? "hell" : "gruen"}>{eyebrow}</Eyebrow>
       <h2
         className={`display text-4xl sm:text-5xl ${
           tone === "dark" ? "text-kalk" : "text-ink"

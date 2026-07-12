@@ -71,6 +71,13 @@ export function Illustration({
           </g>
           <rect x="182" y="206" width="36" height="64" rx="3" fill={copper} />
           <circle cx="210" cy="240" r="3" fill={glow} />
+          {/* Büsche */}
+          <g fill="#7d9c3d" opacity="0.85">
+            <circle cx="74" cy="262" r="12" />
+            <circle cx="92" cy="266" r="9" />
+            <circle cx="326" cy="262" r="12" />
+            <circle cx="309" cy="266" r="9" />
+          </g>
           {/* Wirtshausschild */}
           <line x1="340" y1="164" x2="368" y2="164" stroke={glow} strokeWidth="4" opacity="0.5" />
           <circle cx="372" cy="180" r="14" fill={copper} />
@@ -93,9 +100,11 @@ export function Illustration({
           <circle cx="248" cy="188" r="20" fill={bgA} stroke={silhouette} strokeWidth="4" />
           <rect x="192" y="158" width="7" height="26" rx="3" fill={copper} />
           <rect x="204" y="164" width="6" height="20" rx="3" fill={copper} opacity="0.8" />
-          {/* Stuhllehnen */}
+          {/* Stuhllehnen mit grünen Polstern wie in der echten Stube */}
           <rect x="30" y="150" width="14" height="130" rx="4" fill={silhouette} opacity="0.75" />
           <rect x="356" y="150" width="14" height="130" rx="4" fill={silhouette} opacity="0.75" />
+          <rect x="26" y="196" width="22" height="12" rx="5" fill="#7d9c3d" />
+          <rect x="352" y="196" width="22" height="12" rx="5" fill="#7d9c3d" />
         </g>
       )}
 

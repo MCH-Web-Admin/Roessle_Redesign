@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/Button";
 import { ImageSlot } from "@/components/ImageSlot";
+import { Marker } from "@/components/Marker";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { SectionHead } from "@/components/Section";
@@ -45,7 +46,7 @@ export default function FeiernPage() {
         eyebrow="Feiern & Events"
         title={
           <>
-            Feste feiern, <em>wie sie fallen</em>
+            <Marker tone="hell">Feste</Marker> feiern, wie sie fallen
           </>
         }
         lead="Ob 20 oder 120 Gäste: Bei uns finden Sie den passenden Rahmen, ein Menü nach Ihren Wünschen – und Wirtsleute, die mitdenken."
@@ -82,7 +83,7 @@ export default function FeiernPage() {
               eyebrow="Anlässe"
               title={
                 <>
-                  Wir richten <em>aus</em>
+                  Wir richten aus
                 </>
               }
               lead="Sagen Sie uns, was Sie feiern – wir kümmern uns um den Rest. Gerne machen wir Ihnen Menüvorschläge passend zu Anlass und Budget."
@@ -104,7 +105,7 @@ export default function FeiernPage() {
               eyebrow="Extras"
               title={
                 <>
-                  Themenabende & <em>mehr</em>
+                  Themenabende & mehr
                 </>
               }
               lead="Bayrischer Abend, mexikanische Nacht oder Verkostung in der Brennerei: Auf Wunsch geben wir Ihrer Feier ein Motto – inklusive passender Küche."
@@ -128,7 +129,7 @@ export default function FeiernPage() {
               eyebrow="Gut zu wissen"
               title={
                 <>
-                  So planen wir <em>gemeinsam</em>
+                  So planen wir <Marker>gemeinsam</Marker>
                 </>
               }
             />
