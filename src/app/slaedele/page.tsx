@@ -49,8 +49,9 @@ export default function SlaedelePage() {
           <ImageSlot
             name="slaedele-regal"
             alt="Regal mit Edelbränden und Likören im sLädele"
-            label="Foto · Blick ins sLädele"
-            className="aspect-[4/3] w-full border border-line"
+            variant="slaedele"
+            label="Blick ins sLädele"
+            className="aspect-[4/3] w-full shadow-[0_30px_60px_-30px_rgba(20,33,26,0.45)]"
           />
         </Reveal>
         <Reveal delay={120}>

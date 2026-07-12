@@ -2,16 +2,17 @@
 
 Die Website rendert für jeden Bild-Slot automatisch ein echtes Foto,
 sobald hier eine Datei mit dem passenden Namen liegt
-(`.webp`, `.jpg`, `.jpeg`, `.png` oder `.avif`). Bis dahin erscheint ein
-gestalteter Platzhalter.
+(`.webp`, `.jpg`, `.jpeg`, `.png` oder `.avif`). Bis dahin erscheint eine
+illustrierte Szene im Marken-Stil.
 
 | Dateiname (ohne Endung) | Motiv | Verwendet auf |
 | --- | --- | --- |
 | `hero-haus` | Außenaufnahme Fachwerkhaus | Startseite |
 | `brennerei` | Brennerei (Kessel, Flaschen) | Startseite |
 | `slaedele` | sLädele / Regal | Startseite |
+| `stube-feier` | Festlich gedeckte Stube | Startseite, Feiern & Events |
+| `partyservice` | Buffet / Lieferung | Startseite |
 | `stube` | Gaststube innen | Über uns |
-| `stube-feier` | Festlich gedeckte Stube | Feiern & Events |
 | `scheune` | Event-Scheune | Feiern & Events |
 | `brennkessel` | Kupferkessel Nahaufnahme | Brennerei |
 | `slaedele-regal` | Regal mit Bränden | sLädele |

@@ -9,12 +9,12 @@
    Ochsenblut (Fachwerk-Balken) · Stroh
    ———————————————————————————————————————————————— */
 :root {
-  --tanne: #16241c;
-  --tanne-soft: #1f3226;
-  --kalk: #f4efe2;
+  --tanne: #14211a;
+  --tanne-soft: #203125;
+  --kalk: #f5f0e4;
   --kalk-deep: #eae2cd;
   --kupfer: #b05f2e;
-  --kupfer-hell: #cd7a42;
+  --kupfer-hell: #d07f47;
   --ochsenblut: #7c2d28;
   --stroh: #d5c393;
   --ink: #241f17;
@@ -48,7 +48,6 @@ body {
   background: var(--kalk);
   color: var(--ink);
   font-family: var(--font-sans);
-  font-feature-settings: "ss01";
 }
 
 ::selection {
@@ -60,20 +59,50 @@ body {
 .display {
   font-family: var(--font-display);
   font-weight: 400;
-  line-height: 0.98;
+  line-height: 0.96;
   letter-spacing: -0.01em;
   text-wrap: balance;
 }
 
 .eyebrow {
   font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-weight: 650;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
 .tnum {
   font-variant-numeric: tabular-nums;
+}
+
+/* Atmosphäre: Korn & Glut --------------------------------------------- */
+.grain {
+  position: relative;
+  isolation: isolate;
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.glow {
+  background-image:
+    radial-gradient(
+      52rem 30rem at 12% 88%,
+      rgba(208, 127, 71, 0.2),
+      transparent 62%
+    ),
+    radial-gradient(
+      40rem 26rem at 88% 6%,
+      rgba(213, 195, 147, 0.1),
+      transparent 60%
+    );
 }
 
 /* Fachwerk motif ------------------------------------------------------ */
@@ -93,13 +122,69 @@ body {
   opacity: 0.35;
 }
 
+/* Navigation ----------------------------------------------------------- */
+.navlink {
+  position: relative;
+}
+
+.navlink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  height: 2px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navlink:hover::after,
+.navlink[data-active="true"]::after {
+  transform: scaleX(1);
+}
+
+/* Laufband -------------------------------------------------------------- */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+/* Karten & Interaktion --------------------------------------------------- */
+.card-lift {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 44px -18px rgba(20, 33, 26, 0.35);
+}
+
+.arrow-slide {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+a:hover .arrow-slide {
+  transform: translateX(6px);
+}
+
 /* Scroll reveal ------------------------------------------------------- */
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(22px);
   transition:
-    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.is-visible {
@@ -111,7 +196,7 @@ body {
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(26px);
+    transform: translateY(28px);
   }
   to {
     opacity: 1;
@@ -120,13 +205,39 @@ body {
 }
 
 .rise {
-  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: rise 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.rise-1 { animation-delay: 0.08s; }
-.rise-2 { animation-delay: 0.2s; }
-.rise-3 { animation-delay: 0.34s; }
-.rise-4 { animation-delay: 0.48s; }
+.rise-1 { animation-delay: 0.06s; }
+.rise-2 { animation-delay: 0.18s; }
+.rise-3 { animation-delay: 0.32s; }
+.rise-4 { animation-delay: 0.46s; }
+.rise-5 { animation-delay: 0.6s; }
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.bob {
+  animation: bob 2.4s ease-in-out infinite;
+}
+
+/* Mobile-Menü ------------------------------------------------------------ */
+@keyframes menu-item {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.menu-item {
+  animation: menu-item 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -137,11 +248,21 @@ body {
   .rise-1,
   .rise-2,
   .rise-3,
-  .rise-4 {
+  .rise-4,
+  .rise-5,
+  .bob,
+  .menu-item,
+  .marquee-track {
     animation: none;
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .card-lift,
+  .card-lift:hover,
+  .arrow-slide {
+    transition: none;
+    transform: none;
   }
 }
 

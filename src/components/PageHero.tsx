@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
+import { RoessleMark } from "./Logo";
 import { Eyebrow } from "./Section";
 
-/** Kompakter Seitenkopf für Unterseiten – dunkler Tanne-Grund mit Fachwerk-Band. */
+/** Atmosphärischer Seitenkopf für Unterseiten. */
 export function PageHero({
   eyebrow,
   title,
@@ -12,8 +13,9 @@ export function PageHero({
   lead?: string;
 }) {
   return (
-    <section className="bg-tanne text-kalk">
-      <div className="mx-auto flex max-w-6xl flex-col gap-5 px-5 pt-20 pb-16">
+    <section className="grain glow relative overflow-hidden bg-tanne text-kalk">
+      <RoessleMark className="pointer-events-none absolute -right-16 -bottom-24 size-[24rem] rotate-6 text-kalk/[0.045] sm:size-[30rem]" />
+      <div className="relative mx-auto flex max-w-6xl flex-col gap-5 px-5 pt-36 pb-16 sm:pt-44 sm:pb-20">
         <div className="rise rise-1">
           <Eyebrow tone="stroh">{eyebrow}</Eyebrow>
         </div>
@@ -26,7 +28,7 @@ export function PageHero({
           </p>
         )}
       </div>
-      <div className="fachwerk-band text-stroh" aria-hidden="true" />
+      <div className="fachwerk-band relative text-stroh" aria-hidden="true" />
     </section>
   );
 }

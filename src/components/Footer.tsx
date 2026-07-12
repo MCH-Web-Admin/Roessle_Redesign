@@ -1,12 +1,29 @@
 import Link from "next/link";
-import { Logo } from "./Logo";
-import { hours, nav, site } from "@/data/site";
+import { Logo, RoessleMark } from "./Logo";
+import { hours, navAll, site } from "@/data/site";
 
 export function Footer() {
   return (
-    <footer className="bg-tanne text-kalk">
+    <footer className="grain relative overflow-hidden bg-tanne text-kalk">
       <div className="fachwerk-band text-stroh" aria-hidden="true" />
-      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
+      <RoessleMark className="pointer-events-none absolute -bottom-20 -left-16 size-80 -rotate-6 text-kalk/[0.04]" />
+
+      {/* CTA-Zeile */}
+      <div className="relative border-b border-line-dark">
+        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-5 py-12 sm:flex-row sm:items-center">
+          <p className="display max-w-md text-3xl sm:text-4xl">
+            Lust auf einen Platz in der <em className="text-kupfer-hell">Stube</em>?
+          </p>
+          <a
+            href={site.phoneHref}
+            className="inline-flex items-center gap-3 rounded-full bg-kupfer px-8 py-4 text-sm font-semibold tracking-[0.08em] text-kalk uppercase transition-all duration-200 hover:-translate-y-0.5 hover:bg-kupfer-hell"
+          >
+            Reservieren · {site.phone}
+          </a>
+        </div>
+      </div>
+
+      <div className="relative mx-auto grid max-w-6xl gap-12 px-5 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
         <div className="flex flex-col items-start gap-5">
           <Logo dark />
           <p className="max-w-sm text-sm leading-relaxed text-kalk/70">
@@ -68,7 +85,7 @@ export function Footer() {
           </div>
           <nav aria-label="Fußzeile">
             <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-kalk/60">
-              {nav.slice(1).map((item) => (
+              {navAll.slice(1).map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="hover:text-kalk">
                     {item.label}
@@ -80,8 +97,8 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-line-dark">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-5 text-xs text-kalk/50">
+      <div className="relative border-t border-line-dark">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-5 pb-8 text-xs text-kalk/50">
           <p>
             © {new Date().getFullYear()} {site.name} {site.place} · seit{" "}
             {site.since}

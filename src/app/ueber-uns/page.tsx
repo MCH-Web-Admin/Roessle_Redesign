@@ -76,8 +76,9 @@ export default function UeberUnsPage() {
           <ImageSlot
             name="stube"
             alt="Blick in die renovierte Gaststube des Rössle"
-            label="Foto · Unsere Stube"
-            className="aspect-[4/3] w-full border border-line"
+            variant="stube"
+            label="Unsere Stube"
+            className="aspect-[4/3] w-full shadow-[0_30px_60px_-30px_rgba(20,33,26,0.45)]"
           />
         </Reveal>
       </section>

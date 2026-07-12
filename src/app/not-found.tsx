@@ -3,8 +3,8 @@ import { RoessleMark } from "@/components/Logo";
 
 export default function NotFound() {
   return (
-    <section className="bg-tanne text-kalk">
-      <div className="mx-auto flex min-h-[70svh] max-w-6xl flex-col items-start justify-center gap-6 px-5 py-24">
+    <section className="grain glow bg-tanne text-kalk">
+      <div className="mx-auto flex min-h-[80svh] max-w-6xl flex-col items-start justify-center gap-6 px-5 pt-36 pb-24">
         <RoessleMark className="size-16 text-kupfer-hell" />
         <p className="eyebrow text-stroh">Fehler 404</p>
         <h1 className="display max-w-2xl text-5xl sm:text-6xl">

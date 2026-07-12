@@ -45,8 +45,9 @@ export default function BrennereiPage() {
           <ImageSlot
             name="brennkessel"
             alt="Kupferner Brennkessel der Rössle-Brennerei"
-            label="Foto · Unser Brennkessel"
-            className="aspect-[4/3] w-full border border-line"
+            variant="brennerei"
+            label="Unser Brennkessel"
+            className="aspect-[4/3] w-full shadow-[0_30px_60px_-30px_rgba(20,33,26,0.45)]"
           />
         </Reveal>
         <Reveal delay={120}>

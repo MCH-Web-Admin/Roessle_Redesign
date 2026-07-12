@@ -26,13 +26,15 @@ const raeume = [
     name: "Unsere Stuben",
     text: "Die renovierten Gasträume lassen sich flexibel stellen – vom Familientisch bis zur geschlossenen Gesellschaft mit bis zu 120 Personen.",
     slot: "stube-feier",
-    label: "Foto · Festlich gedeckte Stube",
+    variant: "feier" as const,
+    label: "Festlich gedeckte Stube",
   },
   {
     name: "Die Event-Scheune",
     text: "Rustikales Gebälk, viel Platz und eine besondere Atmosphäre: Unsere Scheune ist die Location für Feste, die in Erinnerung bleiben.",
     slot: "scheune",
-    label: "Foto · Event-Scheune",
+    variant: "scheune" as const,
+    label: "Event-Scheune",
   },
 ];
 
@@ -54,12 +56,15 @@ export default function FeiernPage() {
           {raeume.map((raum, i) => (
             <Reveal key={raum.name} delay={i * 100}>
               <article>
-                <ImageSlot
-                  name={raum.slot}
-                  alt={raum.label.replace("Foto · ", "")}
-                  label={raum.label}
-                  className="aspect-[3/2] w-full border border-line"
-                />
+                <div className="card-lift rounded-md">
+                  <ImageSlot
+                    name={raum.slot}
+                    alt={raum.label}
+                    variant={raum.variant}
+                    label={raum.label}
+                    className="aspect-[3/2] w-full border border-line"
+                  />
+                </div>
                 <h2 className="display mt-6 text-3xl">{raum.name}</h2>
                 <p className="mt-3 max-w-lg leading-relaxed text-ink-soft">
                   {raum.text}

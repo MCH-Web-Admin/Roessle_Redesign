@@ -26,7 +26,7 @@ export const site = {
   url: "https://www.roessle-seedorf.de",
 } as const;
 
-export const hours: { day: string; times: string; note?: string }[] = [
+export const hours: { day: string; times: string }[] = [
   { day: "Montag", times: "08:30 – 13:30" },
   { day: "Dienstag", times: "08:30 – 13:30" },
   { day: "Mittwoch", times: "08:30 – 24:00" },
@@ -36,10 +36,35 @@ export const hours: { day: string; times: string; note?: string }[] = [
   { day: "Sonntag", times: "09:30 – 24:00" },
 ];
 
+/** Öffnungszeiten maschinenlesbar (Minuten seit 0 Uhr), Index 0 = Sonntag. */
+export const openRanges: Record<number, [number, number][]> = {
+  0: [[570, 1440]],
+  1: [[510, 810]],
+  2: [[510, 810]],
+  3: [[510, 1440]],
+  4: [[510, 810]],
+  5: [
+    [510, 810],
+    [1020, 1440],
+  ],
+  6: [[1020, 1440]],
+};
+
 export const hoursNote =
   "Für Gruppen, Familienfeiern und Vereine öffnen wir gerne auch nach Vereinbarung – rufen Sie uns einfach kurz an.";
 
+/** Hauptnavigation (Desktop) – bewusst kompakt gehalten. */
 export const nav = [
+  { href: "/speisekarte", label: "Speisekarte" },
+  { href: "/feiern", label: "Feiern & Events" },
+  { href: "/partyservice", label: "Partyservice" },
+  { href: "/brennerei", label: "Brennerei & sLädele" },
+  { href: "/ueber-uns", label: "Über uns" },
+  { href: "/kontakt", label: "Kontakt" },
+] as const;
+
+/** Alle Seiten (Mobile-Menü & Footer). */
+export const navAll = [
   { href: "/", label: "Start" },
   { href: "/speisekarte", label: "Speisekarte" },
   { href: "/feiern", label: "Feiern & Events" },
@@ -49,3 +74,14 @@ export const nav = [
   { href: "/ueber-uns", label: "Über uns" },
   { href: "/kontakt", label: "Kontakt" },
 ] as const;
+
+/** Laufband auf der Startseite. */
+export const specialties = [
+  "Hausgemachte Maultaschen",
+  "Handgeschabte Spätzle",
+  "Zwiebelrostbraten",
+  "Wild aus heimischer Jagd",
+  "Edelbrände aus eigener Brennerei",
+  "Mittagstisch Mo – Fr",
+  "Feiern bis 120 Gäste",
+];

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { MobileBar } from "@/components/MobileBar";
 import { hours, site } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -57,6 +58,8 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <MobileBar />
+        <div aria-hidden="true" className="h-16 md:hidden" />
       </body>
     </html>
   );

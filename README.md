@@ -51,3 +51,6 @@ npm run build   # Produktionsbuild
 - [ ] **Fotos** der bisherigen Website in `public/images/` einpflegen.
 - [ ] **Impressum/Datenschutz**: Platzhalter (USt-IdNr., Hoster) ergänzen
       und rechtlich prüfen lassen.
+- [ ] **Gäste-Stimmen** auf der Startseite sind aus öffentlichen
+      Bewertungen (Restaurant Guru u. a.) sinngemäß zusammengefasst –
+      gerne durch echte Zitate ersetzen.
