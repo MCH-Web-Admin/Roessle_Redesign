@@ -1,0 +1,152 @@
+@import "tailwindcss";
+@import "@fontsource/instrument-serif/400.css";
+@import "@fontsource/instrument-serif/400-italic.css";
+@import "@fontsource-variable/hanken-grotesk";
+
+/* ————————————————————————————————————————————————
+   Rössle Seedorf · Design-Tokens „Wirtshaus-Moderne"
+   Tanne (Schwarzwald) · Kalk (Putz) · Kupfer (Brennkessel)
+   Ochsenblut (Fachwerk-Balken) · Stroh
+   ———————————————————————————————————————————————— */
+:root {
+  --tanne: #16241c;
+  --tanne-soft: #1f3226;
+  --kalk: #f4efe2;
+  --kalk-deep: #eae2cd;
+  --kupfer: #b05f2e;
+  --kupfer-hell: #cd7a42;
+  --ochsenblut: #7c2d28;
+  --stroh: #d5c393;
+  --ink: #241f17;
+  --ink-soft: #5c544a;
+  --line: rgba(36, 31, 23, 0.14);
+  --line-dark: rgba(244, 239, 226, 0.16);
+}
+
+@theme inline {
+  --color-tanne: var(--tanne);
+  --color-tanne-soft: var(--tanne-soft);
+  --color-kalk: var(--kalk);
+  --color-kalk-deep: var(--kalk-deep);
+  --color-kupfer: var(--kupfer);
+  --color-kupfer-hell: var(--kupfer-hell);
+  --color-ochsenblut: var(--ochsenblut);
+  --color-stroh: var(--stroh);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+  --color-line-dark: var(--line-dark);
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-sans: "Hanken Grotesk Variable", "Hanken Grotesk", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--kalk);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01";
+}
+
+::selection {
+  background: var(--kupfer);
+  color: var(--kalk);
+}
+
+/* Typographic helpers ------------------------------------------------ */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Fachwerk motif ------------------------------------------------------ */
+.fachwerk-band {
+  height: 14px;
+  background-image: repeating-linear-gradient(
+      90deg,
+      currentColor 0 2px,
+      transparent 2px 56px
+    ),
+    repeating-linear-gradient(
+      -60deg,
+      transparent 0 26px,
+      currentColor 26px 28px,
+      transparent 28px 56px
+    );
+  opacity: 0.35;
+}
+
+/* Scroll reveal ------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hero entrance ------------------------------------------------------- */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.rise-1 { animation-delay: 0.08s; }
+.rise-2 { animation-delay: 0.2s; }
+.rise-3 { animation-delay: 0.34s; }
+.rise-4 { animation-delay: 0.48s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .rise,
+  .rise-1,
+  .rise-2,
+  .rise-3,
+  .rise-4 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Focus --------------------------------------------------------------- */
+:focus-visible {
+  outline: 2px solid var(--kupfer);
+  outline-offset: 3px;
+}
