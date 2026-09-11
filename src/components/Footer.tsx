@@ -100,10 +100,22 @@ export function Footer() {
 
       <div className="relative border-t border-line-dark">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-5 pb-8 text-xs text-kalk/50">
-          <p>
-            © {new Date().getFullYear()} {site.name} {site.place} · seit{" "}
-            {site.since}
-          </p>
+          <div className="flex flex-col gap-1">
+            <p>
+              © {new Date().getFullYear()} {site.name} {site.place} · seit{" "}
+              {site.since}
+            </p>
+            <a
+              href="https://mediacontenthosting.de/"
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-1.5 text-[0.7rem] text-kalk/35 transition-colors hover:text-kalk/70"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/mch-logo-weiss.png" alt="" width={14} height={14} className="h-3.5 w-3.5 opacity-60" />
+              Designed by MCH — Media Content Hosting
+            </a>
+          </div>
           <p className="flex gap-4">
             <Link href="/impressum" className="hover:text-kalk">
               Impressum
