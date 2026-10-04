@@ -112,7 +112,7 @@ export function Footer() {
               className="inline-flex items-center gap-1.5 text-[0.7rem] text-kalk/35 transition-colors hover:text-kalk/70"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/mch-logo-weiss.png" alt="" width={14} height={14} className="h-3.5 w-3.5 opacity-60" />
+              <img src="/mch-tanne-lockup-weiss.png" alt="" width={27} height={14} className="h-3.5 w-auto opacity-60" />
               Designed by MCH — Media Content Hosting
             </a>
           </div>
