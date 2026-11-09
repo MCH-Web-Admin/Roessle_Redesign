@@ -7,6 +7,9 @@ import { hours, site } from "@/data/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
+  // Vorschau auf GitHub Pages (GITHUB_PAGES=true): nicht in Suchmaschinen aufnehmen.
+  // Der Build für die eigene Domain bleibt indexierbar.
+  ...(process.env.GITHUB_PAGES === "true" && { robots: { index: false, follow: false } }),
   title: {
     default: `${site.name} ${site.place} · Landgasthof, Brennerei & sLädele seit ${site.since}`,
     template: `%s · ${site.name} ${site.place}`,
